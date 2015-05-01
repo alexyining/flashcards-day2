@@ -16,6 +16,6 @@ app.controller('MainController', function ($scope, FlashCardsFactory) {
 	];
 
 	$scope.getCategoryCards = function(category) {
-		
+		$scope.flashCards = FlashCardsFactory.getFlashCards(category);
 	}
 });

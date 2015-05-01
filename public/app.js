@@ -2,8 +2,12 @@ var app = angular.module('flashCards', []);
 
 app.factory('FlashCardsFactory', function($http) {
     return {
-        getFlashCards: function() {
-            return $http.get('/cards').then(function(res) {
+        getFlashCards: function(category) {
+            var queryParams = {};
+            if (category)
+                queryParams.category=category;
+
+            return $http.get('/cards', {params:queryParams}).then(function(res) {
                     return res.data;
             });
         }
