@@ -7,6 +7,12 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body ng-app="flashCards" ng-controller="MainController">
+    	<button 
+    		ng-repeat="category in categories"
+    		ng-click="getCategoryCards(category)"
+    		class="category-button"> MongoDB 
+    	</button>
+
     	<div
     		ng-repeat="flashCard in flashCards | orderBy : 'question'"
     		class="flash-card">
@@ -15,7 +21,8 @@
     	    	<li
     	    		ng-repeat="answer in flashCard.answers"
     	    		class="flash-card-answer"
-    	    		ng-click="answerQuestion(answer, flashCard)">{{ answer.text }}</li>
+    	    		ng-click="answerQuestion(answer, flashCard)">{{ answer.text }}
+    	    	</li>
     	    </ul>
     	    <h2
     	    	class="answer-feedback"
@@ -25,6 +32,7 @@
     	        <span ng-show="!flashCard.answeredCorrectly">Nope, you got it wrong.</span>
     	    </h2>
     	</div>
+
     	<script src="angular.js"></script>
     	<script src="app.js"></script>
     	<script src="main.controller.js"></script>
